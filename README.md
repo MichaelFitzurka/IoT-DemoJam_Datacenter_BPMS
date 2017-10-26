@@ -20,20 +20,20 @@ Software needed:
 - [JBoss BPM Suite V6.4.0](https://access.redhat.com/jbossnetwork/restricted/softwareDownload.html?softwareId=48441)
 
 ## Notes:
-The "jboss-eap-7.0" folder is just the additions that you need after EAP/BPMS is deployed, and not a full EAP/BPMS folder structure.  Change the "dot_niogit" sub-folder to ".niogit". (Changed the name to make it visible.)
+The "jboss-eap-7.0 - additions" folder is just the additions that you need after EAP/BPMS is deployed, and not a full EAP/BPMS folder structure.  Change the "dot_niogit" sub-folder to ".niogit" before copying over. (Changed the name to make it visible.)
 
-The "LightWorkItemHandler" directory contains the code.  If you make changes, you need to add it back into EAP/BPMS in 2 locations;  
+The "LightWorkItemHandler" folder contains the code.  If you make changes, you need to add it back into EAP/BPMS in 2 locations;  
 - Copy the jar file here: "jboss-eap-7.0/standalone/deployments/business-central.war/WEB-INF/lib"  
 - Delete the repository from here: "jboss-eap-7.0/repositories/kie/com/redhat/demo/iotdemo/LightWorkItemHandler/"  And then upload the latest jar to the repository in BPMS: "Authoring" menu -> "Artifact Repository" menu item -> "Upload" button
 
 I included the Dockerfile from the original project, but that is just for showing the installation instructions.  
 1) Unzip/Deploy EAP.  
 2) Unzip/Deploy the BPMS process to overwrite into the same directory.  
-3) Patch the folder with:  
+3) Patch with:  
 ```sh
 jboss-eap-7.0/bin/jboss-cli.sh "patch apply jboss-eap-7.0.3-patch.zip"
 ```
-4) Copy over the files from the project's "jboss-eap-7.0" folder.  (Again, rename "dot_niogit").
+4) Copy over the files from the project's "jboss-eap-7.0 - additions" folder.  (Again, rename "dot_niogit").
 
 ## Deploy BPM Process
 From [Patrick Steiner](https://github.com/PatrickSteiner/IoT_Demo_AllInOne/blob/master/Readme.adoc#deploy-bpm-process)
